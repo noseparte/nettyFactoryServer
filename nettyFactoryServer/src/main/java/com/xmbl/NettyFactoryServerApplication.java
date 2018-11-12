@@ -1,4 +1,4 @@
-package com.xmbl.application;
+package com.xmbl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,4 +9,5 @@ public class NettyFactoryServerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NettyFactoryServerApplication.class, args);
 	}
+
 }
