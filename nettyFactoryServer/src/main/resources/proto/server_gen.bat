@@ -1,0 +1,2 @@
+
+protoc --proto_path=G:\MilletPineappleRepertory\nettyFactoryServer\nettyFactoryServer\src\main\resources\proto --java_out=G:\MilletPineappleRepertory\nettyFactoryServer\nettyFactoryServer\src\main\java options.proto auth.proto

@@ -1,0 +1,60 @@
+syntax = "proto2";
+
+option java_package = "com.xmbl.ops.proto";
+option java_outer_classname = "AuthMsg";
+import "options.proto";
+
+//注册
+message CSRegRequest {
+	option (messageId) = 1001;
+	required string username = 1;
+	required string pwd = 2; //密码
+}
+
+message SCRegResponse {
+	option (messageId) = 1002;
+	required int32 result = 1; //1表示注册成功，2表示用户名已注册，3表示注册失败（待细化）
+}
+
+//客户端验证请求
+message CSAuthRequest {
+	option (messageId) = 1003;
+	required string username = 1;
+	required string pwd = 2;
+}
+
+message SCAuthResponse {
+	option (messageId) = 1004;
+	required int32 result = 1;
+	required string accessToken = 2;
+	required string username = 3;
+}
+
+/**登录请求*/
+message CSloginRequest {
+	option (messageId) = 1007;
+	required string username = 1;
+	required string pwd = 2;
+	required int32 platform = 3;
+	required string nickname = 4; //昵称。第三方平台返回的值，第一次创建玩家信息的时候会使用。
+}
+
+/**登录返回信息*/
+message SCloginResponse {
+	option (messageId) = 1008;
+	required int32 result = 1; //是否登录成功，1表示成功，2表示失败。
+	required int64 playerId = 2;
+	required string playerName = 3; //用户名
+	required string playerIcon = 4;
+	required int32 coin = 5;
+	required int32 cash = 6;
+	required int32 vit = 7;
+	required int32 level = 8;
+	required int32 exp = 9; //当前等级以获得经验
+	required int32 laborUnion = 10;
+	required int32 upgradeExp = 11; //当前等级总经验
+	required float expMultiple = 12; //经验加成
+	required int32 platform = 13; //平台标识
+	required string nickname = 14; //昵称
+	required string accessToken = 15; //访问唯一标识
+}
