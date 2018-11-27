@@ -22,7 +22,7 @@ public class NettyFactoryRunner implements ApplicationRunner {
 		// Worker线程：Worker线程执行所有的异步I/O，即处理操作
 		EventLoopGroup workGroup = new NioEventLoopGroup();
 		try {
-			// ServerBootstrap 启动NIO服务的辅助启动类,负责初始话netty服务器，并且开始监听端口的socket请求
+			// ServerBootstrap 启动NIO服务的辅助启动类,负责初始化netty服务器，并且开始监听端口的socket请求
 			ServerBootstrap b = new ServerBootstrap();
 			b.group(bossGroup, workGroup);
 			// 设置非阻塞,用它来建立新accept的连接,用于构造serversocketchannel的工厂类

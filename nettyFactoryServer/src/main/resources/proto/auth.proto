@@ -51,6 +51,7 @@ message SCloginResponse {
 	required int32 vit = 7;
 	required int32 level = 8;
 	required int32 exp = 9; //当前等级以获得经验
+	
 	required int32 laborUnion = 10;
 	required int32 upgradeExp = 11; //当前等级总经验
 	required float expMultiple = 12; //经验加成

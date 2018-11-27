@@ -21,7 +21,7 @@ public class MyWebSocketServerHandler extends SimpleChannelInboundHandler<Object
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
 		// 添加
 		Global.group.add(ctx.channel());
-		System.out.println("客户端与服务端连接开启：" + ctx.channel().remoteAddress().toString());
+		logger.info("客户端与服务端连接开启：" + ctx.channel().remoteAddress().toString());
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class MyWebSocketServerHandler extends SimpleChannelInboundHandler<Object
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 		// 移除
 		Global.group.remove(ctx.channel());
-		System.out.println("客户端与服务端连接关闭：" + ctx.channel().remoteAddress().toString());
+		logger.info("客户端与服务端连接关闭：" + ctx.channel().remoteAddress().toString());
 	}
 
 	/**
@@ -56,13 +56,13 @@ public class MyWebSocketServerHandler extends SimpleChannelInboundHandler<Object
 	private void handlerWebSocketFrame(ChannelHandlerContext ctx, WebSocketFrame frame) {
 		// 本例程仅支持文本消息，不支持二进制消息
 		if (!(frame instanceof TextWebSocketFrame)) {
-			System.out.println("本例程仅支持文本消息，不支持二进制消息");
+			logger.info("本例程仅支持文本消息，不支持二进制消息");
 			throw new UnsupportedOperationException(
 					String.format("%s frame types not supported", frame.getClass().getName()));
 		}
 		// 返回应答消息
 		String request = ((TextWebSocketFrame) frame).text();
-		System.out.println("服务端收到：" + request);
+		logger.info("服务端收到：" + request);
 		if (logger.isLoggable(Level.FINE)) {
 			logger.fine(String.format("%s received %s", ctx.channel(), request));
 		}
